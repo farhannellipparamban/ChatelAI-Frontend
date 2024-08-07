@@ -142,13 +142,13 @@ const Footer = () => {
             </div>
           </div>
         </div>
+        <hr className=" mt-14" />
       </div>
-      
-      <footer className="flex flex-wrap justify-between items-center p-4 bg-gray-100">
+      <footer className="flex flex-wrap justify-between items-center mx-16 mt-3 mb-10">
         <div className="w-full sm:w-auto flex items-center mb-4 sm:mb-0">
-          <div className="bg-red-100 p-2 rounded-lg mr-2">
+          <div className="bg-red-50 p-5 rounded-lg mr-5 border border-red-100">
             <svg
-              className="w-6 h-6 text-red-500"
+              className="w-9 h-8 text-red-400"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -163,7 +163,7 @@ const Footer = () => {
             </svg>
           </div>
           <div>
-            <p className="font-semibold text-gray-700">Email</p>
+            <p className="font-semibold text-xl text-gray-700 mb-0.5">Email</p>
             <a
               href="mailto:contact@example.com"
               className="text-gray-600 hover:text-gray-800"
@@ -172,15 +172,15 @@ const Footer = () => {
             </a>
           </div>
         </div>
-        <div className="w-full sm:w-auto text-center sm:text-right">
+        <div className="w-full sm:w-auto text-center sm:text-right text-md font-semibold">
           <a
             href="/privacy-policy"
-            className="text-gray-600 hover:text-gray-800 block sm:inline-block"
+            className="text-gray-600 hover:text-gray-800 block sm:inline-block mb-5"
           >
             Privacy & Policy
           </a>
-          <p className="text-gray-500 text-sm mt-1 sm:mt-0">
-          © 2024 ChatelAI. All Rights Reserved.
+          <p className="text-gray-500  mt-1 sm:mt-0">
+            © 2024 ChatelAI. All Rights Reserved.
           </p>
         </div>
       </footer>
