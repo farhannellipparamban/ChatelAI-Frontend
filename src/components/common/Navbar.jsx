@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars, faTimes } from "@fortawesome/free-solid-svg-icons";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   const [mobileMenu, setMobileMenu] = useState(false);
@@ -9,26 +10,28 @@ const Navbar = () => {
     <nav className="bg-white shadow-md py-4 sm:py-5 lg:py-6">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
-          <div className="flex-shrink-0">
-            <h1 className="text-3xl text-green-400 font-medium tracking-tighter leading-tight">
-              ChatelAI
-            </h1>
-          </div>
+        <div className="flex-shrink-0">
+              <Link to="/">
+                <h1 className="text-3xl text-green-400 font-medium tracking-normal leading-tight cursor-pointer">
+                  ChatelAI
+                </h1>
+              </Link>
+            </div>
           <div className="hidden md:flex md:items-center md:space-x-6">
             <a
-              href="#"
+              href="/features"
               className="text-gray-600 hover:text-gray-700 px-3 py-2 rounded-md text-md font-semibold transition-colors duration-300"
             >
               Features
             </a>
             <a
-              href="#"
+              href="/pricing"
               className="text-gray-600 hover:text-gray-700 px-3 py-2 rounded-md text-md font-semibold transition-colors duration-300"
             >
               Pricing
             </a>
             <a
-              href="#"
+              href="/blog"
               className="text-gray-600 hover:text-gray-700 px-3 py-2 rounded-md text-md font-semibold transition-colors duration-300"
             >
               Blog
@@ -64,25 +67,25 @@ const Navbar = () => {
           <div className="flex justify-center items-center h-full ">
             <div className="px-4 pt-4 pb-6 space-y-4 ">
               <a
-                href="#"
+                href="/"
                 className="text-gray-800 hover:text-gray-600 block px-6 py-3 rounded-md text-center font-medium transition-colors duration-300"
               >
                 Home
               </a>
               <a
-                href="#"
+                href="/features"
                 className="text-gray-800 hover:text-gray-600 block px-6 py-3 rounded-md text-center font-medium transition-colors duration-300"
               >
                 Features
               </a>
               <a
-                href="#"
+                href="/pricing"
                 className="text-gray-800 hover:text-gray-600 block px-6 py-3 rounded-md text-center font-medium transition-colors duration-300"
               >
                 Pricing
               </a>
               <a
-                href="#"
+                href="/blog"
                 className="text-gray-800 hover:text-gray-600 block px-6 py-3 rounded-md text-center font-medium transition-colors duration-300"
               >
                 Blog
