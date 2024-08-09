@@ -206,8 +206,8 @@ const HomeHero = () => {
                 </div>
               </div>
 
-              <div className="flex justify-between items-end ">
-                {/* Circular progress */}
+              <div className="flex flex-col md:flex-row justify-between items-center md:items-end">
+              {/* Circular progress */}
                 <div className="bg-rose-50 te px-6 py-3 rounded-lg border border-rose-200 ">
                   <div className="relative w-24 h-24">
                     <div className="absolute inset-0 rounded-full border-8 border-red-200"></div>
