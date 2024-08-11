@@ -148,8 +148,11 @@ const HomeOffer = () => {
               </p>
               <ul className="space-y-3">
                 {features[activeFeature].points.map((point, index) => (
-                  <li key={index} className="flex items-center text-gray-950 bg-gray-200 rounded-full">
-                    <div  className="w-5 h-5 rounded-full overflow-hidden bg-black ml-3">
+                  <li
+                    key={index}
+                    className="flex items-center text-gray-950 bg-gray-200 rounded-full"
+                  >
+                    <div className="w-5 h-5 rounded-full overflow-hidden bg-black ml-3">
                       <svg
                         className="h-3 w-3 text-white "
                         fill="none"
@@ -161,9 +164,8 @@ const HomeOffer = () => {
                       >
                         <path d="M5 13l4 4L19 7"></path>
                       </svg>
-                      
                     </div>
-                      <span className="text-lg p-2">{point}</span>
+                    <span className="text-lg p-2">{point}</span>
                   </li>
                 ))}
               </ul>
@@ -171,7 +173,6 @@ const HomeOffer = () => {
           </div>
         </div>
       </div>
-      
     </div>
   );
 };

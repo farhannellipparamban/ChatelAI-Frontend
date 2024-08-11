@@ -1,7 +1,7 @@
-import React from 'react'
-import Navbar from '../components/common/Navbar'
-import BlogOverView from '../components/Blog/BlogOverView'
-import Footer from '../components/common/Footer'
+import React from "react";
+import Navbar from "../components/common/Navbar";
+import BlogOverView from "../components/Blog/BlogOverView";
+import Footer from "../components/common/Footer";
 
 const BlogOverViewPage = () => {
   return (
@@ -10,7 +10,7 @@ const BlogOverViewPage = () => {
       <BlogOverView />
       <Footer />
     </>
-  )
-}
+  );
+};
 
-export default BlogOverViewPage
+export default BlogOverViewPage;

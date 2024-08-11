@@ -44,7 +44,7 @@ const BlogPage = () => {
               <h2 className="text-2xl sm:text-3xl font-serif text-gray-900">
                 <Link
                   className="text-gray-900 hover:text-gray-600"
-                   to="/blog/overview"
+                  to="/blog/overview"
                   aria-label="Read about Language Models & AI: Elevating Hospitality Experiences"
                 >
                   Language Models &amp; AI: Elevating Hospitality Experiences
@@ -62,7 +62,7 @@ const BlogPage = () => {
 
             <Link
               className="flex items-center mt-4 mb-8 text-green-500 hover:text-green-600"
-               to="/blog/overview"
+              to="/blog/overview"
               aria-label="Read more about improved data security measures"
             >
               <p className="mr-2 mt-2 text-lg sm:text-xl font-semibold">

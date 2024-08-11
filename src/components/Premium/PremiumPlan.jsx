@@ -1,156 +1,267 @@
 import React, { useState } from "react";
 
 const PremiumPlan = () => {
-  const [billPlan, setBillPlan] = useState("monthly");
+  const [billingPeriod, setBillingPeriod] = useState("monthly");
 
-  const plans = [
-    {
-      name: "Easy",
-      discretion:
-        "All the basics for businesses that are just getting started.",
-      price: {
-        monthly: 29,
-        annually: 29 * 12 - 199,
-      },
-      features: ["One project", "Your dashboard"],
-    },
-    {
-      name: "Basic",
-      discretion: "Better for growing businesses that want more customers.",
-      price: {
-        monthly: 59,
-        annually: 59 * 12 - 100,
-      },
-      features: [
-        "Two projects",
-        "Your dashboard",
-        "Components included",
-        "Advanced charts",
-      ],
-    },
-    {
-      name: "Custom",
-      discretion: "Advanced features for pros who need more customization.",
-      price: {
-        monthly: 139,
-        annually: 139 * 12 - 100,
-      },
-      features: [
-        "Unlimited projects",
-        "Your dashboard",
-        "+300 Components",
-        "Chat support",
-      ],
-    },
-  ];
+  const getProPrice = () => {
+    return billingPeriod === "3months" ? 361 : 389;
+  };
 
   return (
-    <>
-      <main className="mx-4 my-16">
-        <div className="text-center">
-          <h1 className="mb-4 text-2xl font-normal md:text-3xl lg:text-4xl">
-            Our <span className="font-semibold">plans</span> for your{" "}
-            <span className="font-semibold">strategies</span>
-          </h1>
-          <p className="text-sm font-normal text-gray-400">
-            See below our main three plans for your business, for your startup
-            and agency.
+    <main className="relative overflow-hidden">
+      {/* Top half with pink background */}
+      <div className="bg-pink-50 h-1/2 absolute inset-0 top-0 z-0"></div>
+      <div
+        className="absolute -inset-x-10 bottom-1/2 h-20 border-t border-pink-300 bg-white z-0"
+        style={{
+          borderTopLeftRadius: "50% 100%",
+          borderTopRightRadius: "50% 100%",
+        }}
+      ></div>
+      {/* Content of the page */}
+      <div className="relative z-10 container mx-auto px-4 py-28">
+        <div className="text-center mb-12">
+          <p className="text-xs sm:text-sm md:text-base text-gray-500 uppercase mb-5 tracking-widest">
+            TRUSTED BY MANY
           </p>
-          <p className="text-sm font-normal text-gray-400">
-            It start from here! You can teach yourself what you really like.
-          </p>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif text-gray-800 mb-8">
+            Pricing plans
+          </h2>
         </div>
 
-        {/* Plan switch */}
-        <div className="flex items-center justify-center mt-10 space-x-4">
-          <span className="text-base font-medium">Bill Monthly</span>
-          <button
-            className="relative rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-            onClick={() =>
-              setBillPlan(billPlan === "monthly" ? "annually" : "monthly")
-            }
-          >
-            <div className="w-16 h-8 transition bg-indigo-500 rounded-full shadow-md outline-none"></div>
-            <div
-              className={`absolute inline-flex items-center justify-center w-6 h-6 transition-all duration-200 ease-in-out transform bg-white rounded-full shadow-sm top-1 ${
-                billPlan === "monthly" ? "left-1" : "left-9"
+        {/* Billing Period Buttons */}
+        <div className="flex justify-center mb-8">
+          <div className="inline-flex rounded-md shadow-sm" role="group">
+            <div className="px-2.5">
+              <button
+                type="button"
+                className={`px-6 sm:px-8 py-2 sm:py-3 text-sm sm:text-lg font-semibold rounded transition-colors duration-300 ${
+                  billingPeriod === "monthly"
+                    ? "text-white bg-gray-900"
+                    : "text-gray-800 bg-pink-50 border border-gray-400"
+                }`}
+                onClick={() => setBillingPeriod("monthly")}
+              >
+                Monthly
+              </button>
+            </div>
+
+            <button
+              type="button"
+              className={`px-6 sm:px-8 py-2 sm:py-3 text-sm sm:text-lg font-semibold rounded transition-colors duration-300 ${
+                billingPeriod === "3months"
+                  ? "text-white bg-gray-900"
+                  : "text-gray-800 bg-pink-50 border border-gray-400"
               }`}
-            ></div>
-          </button>
-          <span className="text-base font-medium">Bill Annually</span>
-        </div>
-
-        {/* Plans */}
-        <div className="flex flex-col items-center justify-center mt-16 space-y-8 lg:flex-row lg:items-stretch lg:space-x-8 lg:space-y-0">
-          {plans.map((plan, i) => (
-            <section
-              key={i}
-              className="flex flex-col w-full max-w-sm p-12 space-y-6 bg-white rounded-lg shadow-md"
+              onClick={() => setBillingPeriod("3months")}
             >
-              {/* Price */}
-              <div className="flex-shrink-0">
-                <span
-                  className={`text-4xl font-medium tracking-tight ${
-                    plan.name === "Basic" ? "text-green-500" : ""
-                  }`}
-                >
-                  $
-                  {billPlan === "monthly"
-                    ? plan.price.monthly
-                    : plan.price.annually}
-                </span>
-                <span className="text-gray-400">
-                  {billPlan === "monthly" ? "/month" : "/year"}
-                </span>
-              </div>
-
-              {/*  */}
-              <div className="flex-shrink-0 pb-6 space-y-2 border-b">
-                <h2 className="text-2xl font-normal">{plan.name}</h2>
-                <p className="text-sm text-gray-400">{plan.discretion}</p>
-              </div>
-
-              {/* Features */}
-              <ul className="flex-1 space-y-4">
-                {plan.features.map((feature, i) => (
-                  <li key={i} className="flex items-start">
-                    <svg
-                      className="w-6 h-6 text-green-300"
-                      aria-hidden="true"
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 20 20"
-                      fill="currentColor"
-                    >
-                      <path
-                        fillRule="evenodd"
-                        d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                        clipRule="evenodd"
-                      />
-                    </svg>
-                    <span className="ml-3 text-base font-medium">
-                      {feature}
-                    </span>
-                  </li>
-                ))}
-              </ul>
-
-              {/* Button */}
-              <div className="flex-shrink-0 pt-4">
-                <button
-                  className={`inline-flex items-center justify-center w-full max-w-xs px-4 py-2 transition-colors border rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 ${
-                    plan.name === "Basic"
-                      ? "bg-indigo-500 text-white hover:bg-indigo-700"
-                      : "hover:bg-indigo-500 hover:text-white"
-                  }`}
-                >
-                  Get {plan.name}
-                </button>
-              </div>
-            </section>
-          ))}
+              3 Months
+            </button>
+          </div>
         </div>
-      </main>
-    </>
+
+        {/* Pricing Cards */}
+        <div className="flex flex-wrap px-4">
+          {/* Discover Plan */}
+          <div className="w-full md:w-1/3 shadow-sm rounded-l-lg mb-8 border border-gray-300 relative z-20">
+            <div className="bg-white rounded-lg overflow-hidden">
+              <div className="p-6 sm:p-8">
+                <h3 className="text-md sm:text-md font-semibold text-gray-800 mb-2.5">
+                  Discover
+                </h3>
+                <div className="flex items-baseline mb-4">
+                  <span className="text-4xl sm:text-5xl font-semibold text-gray-900">
+                    Free
+                  </span>
+                  <span className="ml-2 text-sm sm:text-lg text-gray-500 font-semibold">
+                    / 5 days
+                  </span>
+                </div>
+                <p className="text-gray-600 text-sm sm:text-base mb-8">
+                  Experience ChatelAI to the fullest with features curated to
+                  your resort
+                </p>
+                <ul className="space-y-4 text-sm sm:text-base relative pb-11">
+                  {[
+                    "Premium Plan Included",
+                    "Enjoy Complimentary Access",
+                    "Live Customer Care",
+                    "No Commitment Period",
+                    "Custom Trained LLM Model",
+                    "Guest Personal LLM Concierge",
+                  ].map((feature, index) => (
+                    <li
+                      key={index}
+                      className="relative flex items-center -mt-3"
+                    >
+                      <div className="relative flex items-center space-x-1 space-y-5">
+                        <div className="flex items-center justify-center w-6 h-6 sm:w-8 sm:h-8">
+                          <div className="w-4 h-4 sm:w-6 sm:h-6 border-2 border-gray-300 rounded-full flex items-center justify-center mt-5">
+                            <svg
+                              className="w-3 sm:w-4 h-3 sm:h-4 text-red-400"
+                              fill="currentColor"
+                              viewBox="0 0 20 20"
+                            >
+                              <path
+                                fillRule="evenodd"
+                                d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                                clipRule="evenodd"
+                              />
+                            </svg>
+                          </div>
+                        </div>
+                        <span className="text-gray-800">{feature}</span>
+                      </div>
+                      <div className="absolute -bottom-4 w-full border-t  border-gray-300"></div>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          {/* PRO Plan */}
+          <div className="w-full md:w-1/3 mb-8 shadow-sm border border-gray-300 relative z-20">
+            <div className="bg-white rounded-lg overflow-hidden">
+              <div className="p-6 sm:p-8">
+                <h3 className="text-md sm:text-md font-semibold text-gray-800 mb-2.5">
+                  PRO
+                </h3>
+                <div className="flex items-baseline mb-4">
+                  <span
+                    className={`text-4xl sm:text-5xl font-bold text-gray-900 transition-transform duration-300 ${
+                      billingPeriod === "3months" ? "scale-110" : "scale-100"
+                    }`}
+                  >
+                    ${getProPrice()}
+                  </span>
+                  <span className="ml-2 text-sm sm:text-lg text-gray-500 font-semibold">
+                    /month
+                  </span>
+                </div>
+                <p className="text-gray-600 text-sm sm:text-base mb-8">
+                  Automate social media, analyze engagement, boost your online
+                  presence
+                </p>
+                <ul className="space-y-4 text-sm sm:text-base pb-1">
+                  {[
+                    "Dedicated Resort Trained LLM Model",
+                    "Social Media Automation",
+                    "Guest Queries Analysis",
+                    "Whatsapp LLM Responder",
+                    "Real Time Sentiment Analysis Insights",
+                    "Connect up to 3 Messaging Platforms",
+                  ].map((feature, index) => (
+                    <li
+                      key={index}
+                      className="relative flex items-center -mt-3"
+                    >
+                      {/* Container for tick mark and underline */}
+                      <div className="relative flex items-center space-x-1 space-y-5">
+                        <div className="flex items-center justify-center w-6 h-6 sm:w-8 sm:h-8">
+                          <div className="relative flex items-center justify-center w-full h-full">
+                            <div className="w-4 h-4 sm:w-6 sm:h-6 border-2 border-gray-300 rounded-full flex items-center justify-center mt-5">
+                              <svg
+                                className="w-3 sm:w-4 h-3 sm:h-4 text-red-400 relative"
+                                fill="currentColor"
+                                viewBox="0 0 20 20"
+                              >
+                                <path
+                                  fillRule="evenodd"
+                                  d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                                  clipRule="evenodd"
+                                />
+                              </svg>
+                            </div>
+                          </div>
+                        </div>
+                        <span className="text-gray-800">{feature}</span>
+                      </div>
+                      {/* Underline */}
+                      <div className="absolute -bottom-4 w-full border-t  border-gray-300"></div>
+                    </li>
+                  ))}
+                  <li className="relative flex items-center space-x-1 space-y-4">
+                    <div className="flex items-center justify-center w-6 h-6 sm:w-8 sm:h-8 ">
+                      <div className="relative flex items-center justify-center w-full h-full">
+                        <div className="w-4 h-4 sm:w-6 sm:h-6 border-2 border-gray-300 rounded-full flex items-center justify-center mt-4">
+                          <svg
+                            className="w-4 sm:w-5 h-2.5 sm:h-3.5 text-gray-300 relative"
+                            fill="currentColor"
+                            viewBox="0 0 20 20"
+                          >
+                            <path
+                              fillRule="evenodd"
+                              d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                              clipRule="evenodd"
+                            />
+                          </svg>
+                        </div>
+                      </div>
+                    </div>
+                    <span className="text-gray-400 ">Premium Plan</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          {/* PREMIUM Plan */}
+          <div className="w-full md:w-1/3 mb-8 shadow-sm border rounded-r-lg border-gray-300 relative z-20">
+            <div className="bg-white rounded-lg overflow-hidden">
+              <div className="p-6 sm:p-8 mt-8">
+                <h3 className="text-md sm:text-md font-semibold text-gray-800 mb-2.5">
+                  PREMIUM
+                </h3>
+                <div className="flex items-baseline mb-4">
+                  <span className="text-4xl sm:text-5xl font-semibold text-gray-900">
+                    Custom
+                  </span>
+                  <span className="ml-2 text-sm sm:text-lg text-gray-500 font-semibold">
+                    request
+                  </span>
+                </div>
+                <p className="text-gray-600 text-sm sm:text-lg mb-8">
+                  Request any bespoke feature and we'll custom build them for
+                  you
+                </p>
+                <ul className="space-y-4 text-sm sm:text-base relative pb-60">
+                  {[
+                    "Pro Plan",
+                    "Request bespoke features",
+                    "Custom AI solutions",
+                  ].map((feature, index) => (
+                    <li
+                      key={index}
+                      className="relative flex items-center -mt-3"
+                    >
+                      <div className="relative flex items-center space-x-1 space-y-5 ">
+                        <div className="flex items-center justify-center w-6 h-6 sm:w-8 sm:h-8">
+                          <div className="w-4 h-4 sm:w-6 sm:h-6 border-2 border-gray-300 rounded-full flex items-center justify-center mt-5">
+                            <svg
+                              className="w-3 sm:w-4 h-3 sm:h-4 text-red-400"
+                              fill="currentColor"
+                              viewBox="0 0 20 20"
+                            >
+                              <path
+                                fillRule="evenodd"
+                                d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                                clipRule="evenodd"
+                              />
+                            </svg>
+                          </div>
+                        </div>
+                        <span className="text-gray-800">{feature}</span>
+                      </div>
+                      <div className="absolute -bottom-4 w-full border-t  border-gray-300"></div>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
   );
 };
 

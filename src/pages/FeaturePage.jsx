@@ -104,7 +104,7 @@ const FeaturePage = () => {
         )}
       </nav>
       <FeatureHero />
-        <Footer />
+      <Footer />
     </>
   );
 };

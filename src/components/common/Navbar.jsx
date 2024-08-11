@@ -10,13 +10,13 @@ const Navbar = () => {
     <nav className="bg-white shadow-md py-4 sm:py-5 lg:py-6">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
-        <div className="flex-shrink-0">
-              <Link to="/">
-                <h1 className="text-3xl text-green-400 font-medium tracking-normal leading-tight cursor-pointer">
-                  ChatelAI
-                </h1>
-              </Link>
-            </div>
+          <div className="flex-shrink-0">
+            <Link to="/">
+              <h1 className="text-3xl text-green-400 font-medium tracking-normal leading-tight cursor-pointer">
+                ChatelAI
+              </h1>
+            </Link>
+          </div>
           <div className="hidden md:flex md:items-center md:space-x-6">
             <a
               href="/features"
